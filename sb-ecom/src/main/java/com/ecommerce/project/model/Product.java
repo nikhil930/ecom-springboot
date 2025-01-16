@@ -1,5 +1,8 @@
 package com.ecommerce.project.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -40,4 +43,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private User user;
+    
+    @OneToMany(mappedBy = "product" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE} , fetch = FetchType.EAGER)
+    private List<CartItem> products = new ArrayList<CartItem>();
 }
