@@ -34,10 +34,10 @@ public class WebSecurityConfig {
 	UserDetailsServiceImpl userDetailsServiceImpl;
 	
 	@Autowired
-	private AuthEntryPointJwt unauthorizedHandler;
+	 AuthEntryPointJwt unauthorizedHandler;
 	
 	@Bean
-	private AuthTokenFilter authenticationJwtTokenFilter(){
+	AuthTokenFilter authenticationJwtTokenFilter(){
 		return new AuthTokenFilter();
 	}
 	

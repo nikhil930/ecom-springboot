@@ -1,6 +1,5 @@
 package com.ecommerce.project.service;
 
-
 import com.ecommerce.project.exceptions.APIException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
 import com.ecommerce.project.model.Cart;
@@ -180,7 +179,7 @@ public class ProductServiceImpl implements ProductService {
         productFromDb.setSpecialPrice(product.getSpecialPrice());
 
         Product savedProduct = productRepository.save(productFromDb);
-//Update all the carts ,containg the product , if a product is updated
+
         List<Cart> carts = cartRepository.findCartsByProductId(productId);
 
         List<CartDTO> cartDTOs = carts.stream().map(cart -> {
@@ -208,7 +207,7 @@ public class ProductServiceImpl implements ProductService {
         // DELETE
         List<Cart> carts = cartRepository.findCartsByProductId(productId);
         carts.forEach(cart -> cartService.deleteProductFromCart(cart.getCartId(), productId));
-        
+
         productRepository.delete(product);
         return modelMapper.map(product, ProductDTO.class);
     }

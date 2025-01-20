@@ -234,7 +234,7 @@ public class CartServiceImpl implements CartService{
         return "Product " + cartItem.getProduct().getProductName() + " removed from the cart !!!";
     }
 
-// if a product prioce changes in cart then updating it 
+
     @Override
     public void updateProductInCarts(Long cartId, Long productId) {
         Cart cart = cartRepository.findById(cartId)
